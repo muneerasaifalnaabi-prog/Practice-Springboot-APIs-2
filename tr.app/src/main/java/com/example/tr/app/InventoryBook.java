@@ -4,7 +4,7 @@ public class InventoryBook {
     private Integer bookId;
     private String title;
     private double price;
-    private  Integer stockCount;
+    private Integer stockCount;
 
     public InventoryBook(Integer bookId, String title, double price, Integer stockCount) {
         this.bookId = bookId;

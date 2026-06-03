@@ -13,34 +13,34 @@ public class BookstoreController {
 
     @GetMapping("/addInventoryBook")
     public String addInventoryBook(@RequestParam Integer id, @RequestParam String title, @RequestParam Double price, @RequestParam Integer stock) {
-           InventoryBook inventoryBook =new InventoryBook(id,title,price,stock);
-           inventoryBooks.add(inventoryBook);
+        InventoryBook inventoryBook = new InventoryBook(id, title, price, stock);
+        inventoryBooks.add(inventoryBook);
 
-           return " Booke added successfully to catalog ";
+        return " Booke added successfully to catalog ";
     }
 
     @GetMapping("/checkStock")
-    public String checkStock(@RequestParam Integer id){
-        for (InventoryBook i :inventoryBooks){
-            if (i.getBookId()==id){
-                if(i.getStockCount()> 0){
-                    return  "Available Book : "+i.getTitle() + " Price : "+i.getPrice();
-                }
-                else {
-                    return  "Sorry, "+i.getTitle()+" is currently sold out .. :(";
+    public String checkStock(@RequestParam Integer id) {
+        for (InventoryBook i : inventoryBooks) {
+            if (i.getBookId() == id) {
+                if (i.getStockCount() > 0) {
+                    return "Available Book : " + i.getTitle() + " Price : " + i.getPrice();
+                } else {
+                    return "Sorry, " + i.getTitle() + " is currently sold out .. :(";
                 }
             }
 
         }
-        return  "Sorry ,the BookStore does not carry this title";
+        return "Sorry ,the BookStore does not carry this title";
     }
-    @GetMapping("/report")
-    public String stockReport(@RequestParam Integer stockThreshold ){
-        String report= "";
 
-        for (InventoryBook book :inventoryBooks){
-            if (book.getStockCount()<= stockThreshold){
-                report += "Title :" +book.getTitle() + " Stock : "+ book.getStockCount();
+    @GetMapping("/report")
+    public String stockReport(@RequestParam Integer stockThreshold) {
+        String report = "";
+
+        for (InventoryBook book : inventoryBooks) {
+            if (book.getStockCount() <= stockThreshold) {
+                report += "Title :" + book.getTitle() + " Stock : " + book.getStockCount();
             }
         }
         if (report.equals("")) {

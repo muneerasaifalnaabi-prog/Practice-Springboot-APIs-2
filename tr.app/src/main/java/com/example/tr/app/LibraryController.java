@@ -9,72 +9,74 @@ import java.util.List;
 
 @RestController
 public class LibraryController {
-    private static List<Author> authorList=new ArrayList<>();
-    private static List<Book> bookList =new ArrayList<>();
+    private static List<Author> authorList = new ArrayList<>();
+    private static List<Book> bookList = new ArrayList<>();
 
     @GetMapping("/addAuthor")
-public String addAuthor(@RequestParam Integer id ,@RequestParam String name,@RequestParam String biography){
-    Author author = new Author(id,name,biography);
-    authorList.add(author);
-    return "Author added successfully";
+    public String addAuthor(@RequestParam Integer id, @RequestParam String name, @RequestParam String biography) {
+        Author author = new Author(id, name, biography);
+        authorList.add(author);
+        return "Author added successfully";
 
-}
-@GetMapping("/allAuthors")
-public List<Author> authorList(){
+    }
+
+    @GetMapping("/allAuthors")
+    public List<Author> getAllAuthors() {
         return authorList;
-}
-@GetMapping("/addRelationalbBook")
-public String addRelationalBook(@RequestParam int id, @RequestParam String name, @RequestParam int authorId) {
-    boolean authorExists = false;
-
-    for (Author a :authorList){
-        if(a.getId()==authorId){
-            authorExists=true;
-            break;
-        }
     }
-    if (authorExists){
-        Book book = new Book(id,name,authorId);
-        bookList.add(book);
-        return "Book added Successfully";
-    }
-    else
-        return "Author id does not exits";
-}
-@GetMapping("/authorReport")
-public String authorReport(@RequestParam String authorName){
-        Author foundAuthor =null;
 
-        for (Author a :authorList){
-            if (a.getName().equalsIgnoreCase(authorName)) {
-                foundAuthor=a;
+    @GetMapping("/addRelationalBook")
+    public String addRelationalBook(@RequestParam int id, @RequestParam String name, @RequestParam int authorId) {
+        boolean authorExists = false;
+
+        for (Author a : authorList) {
+            if (a.getId() == authorId) {
+                authorExists = true;
                 break;
             }
         }
-        if (foundAuthor==null){
+        if (authorExists) {
+            Book book = new Book(id, name, authorId);
+            bookList.add(book);
+            return "Book added Successfully";
+        } else
+            return "Author id does not exits";
+    }
+
+    @GetMapping("/authorReport")
+    public String authorReport(@RequestParam String authorName) {
+        Author foundAuthor = null;
+
+        for (Author a : authorList) {
+            if (a.getName().equalsIgnoreCase(authorName)) {
+                foundAuthor = a;
+                break;
+            }
+        }
+        if (foundAuthor == null) {
             return "Author not found";
         }
-    StringBuilder booksWritten = new StringBuilder();
+        StringBuilder booksWritten = new StringBuilder();
 
-    for (Book book : bookList) {
+        for (Book book : bookList) {
 
-        if (book.getAuthorId() == foundAuthor.getId()) {
+            if (book.getAuthorId() == foundAuthor.getId()) {
 
-            if (booksWritten.length() > 0) {
-                booksWritten.append(", ");
+                if (booksWritten.length() > 0) {
+                    booksWritten.append(", ");
+                }
+
+                booksWritten.append(book.getName());
             }
-
-            booksWritten.append(book.getName());
         }
-    }
 
-    if (booksWritten.length() == 0) {
-        booksWritten.append("None");
-    }
+        if (booksWritten.length() == 0) {
+            booksWritten.append("None");
+        }
 
-    return "Author ID: " + foundAuthor.getId() + " Name: " + foundAuthor.getName()
-            + " Biography: " + foundAuthor.getBiography()
-            + " Books Written: " + booksWritten;
-}
+        return "Author ID: " + foundAuthor.getId() + " Name: " + foundAuthor.getName()
+                + " Biography: " + foundAuthor.getBiography()
+                + " Books Written: " + booksWritten;
+    }
 }
 
