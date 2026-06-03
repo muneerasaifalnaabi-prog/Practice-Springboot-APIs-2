@@ -32,7 +32,10 @@ public String addRelationalBook(@RequestParam int id, @RequestParam String name,
             authorExists=true;
             break;
         }
-
+    }
+    if (authorExists){
+        Book book = new Book(id,name,authorId);
+        bookList.add(book);
     }
 
 }
