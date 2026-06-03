@@ -36,6 +36,10 @@ public class BookController {
         @GetMapping("/search-msg")
         public String searchMsg(@RequestParam Integer id){
 
+        for (Book b :books){
+            if (b.getId().equals(id))
+        }
+
 
         }
 
