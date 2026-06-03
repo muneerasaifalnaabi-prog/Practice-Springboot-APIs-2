@@ -36,10 +36,14 @@ public String addRelationalBook(@RequestParam int id, @RequestParam String name,
     if (authorExists){
         Book book = new Book(id,name,authorId);
         bookList.add(book);
+        return "Book added Successfully";
     }
+    else
+        return "Author id does not exits";
+}
+@GetMapping("/authorReport")
+public String authorReport(@RequestParam String authorName){
 
 }
-
-
 
 }
