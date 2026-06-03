@@ -15,5 +15,7 @@ public class BookstoreController {
     public String addInventoryBook(@RequestParam Integer id, @RequestParam String title, @RequestParam Double price, @RequestParam Integer stock) {
            InventoryBook inventoryBook =new InventoryBook(id,title,price,stock);
            inventoryBooks.add(inventoryBook);
+
+           return " Booke added successfully to catalog ";
     }
 }
