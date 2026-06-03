@@ -40,7 +40,7 @@ public class BookstoreController {
 
         for (InventoryBook book : inventoryBooks) {
             if (book.getStockCount() <= stockThreshold) {
-                report += "Title :" + book.getTitle() + " Stock : " + book.getStockCount();
+                report += "Title :" + book.getTitle() + "|  Stock : " + book.getStockCount();
             }
         }
         if (report.equals("")) {
