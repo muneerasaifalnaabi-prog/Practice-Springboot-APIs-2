@@ -8,5 +8,6 @@ import java.util.List;
 @RestController
 public class LibraryController {
     private static List<Author> authorList=new ArrayList<>();
+    (private static List<Book> bookList =new ArrayList<>();
 
 }
