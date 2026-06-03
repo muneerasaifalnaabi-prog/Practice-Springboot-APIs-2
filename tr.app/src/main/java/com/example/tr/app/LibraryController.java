@@ -39,8 +39,9 @@ public class LibraryController {
             Book book = new Book(id, name, authorId);
             bookList.add(book);
             return "Book added Successfully";
-        } else
+        } else {
             return "Author id does not exits";
+        }
     }
 
     @GetMapping("/authorReport")
@@ -74,9 +75,10 @@ public class LibraryController {
             booksWritten.append("None");
         }
 
-        return "Author ID: " + foundAuthor.getId() + " Name: " + foundAuthor.getName()
-                + " Biography: " + foundAuthor.getBiography()
-                + " Books Written: " + booksWritten;
+        return "Author ID: " + foundAuthor.getId()
+                + "\nName: " + foundAuthor.getName()
+                + "\nBiography: " + foundAuthor.getBiography()
+                + "\nBooks Written: " + booksWritten;
     }
 }
 
