@@ -43,7 +43,38 @@ public String addRelationalBook(@RequestParam int id, @RequestParam String name,
 }
 @GetMapping("/authorReport")
 public String authorReport(@RequestParam String authorName){
+        Author foundAuthor =null;
 
+        for (Author a :authorList){
+            if (a.getName().equalsIgnoreCase(authorName)) {
+                foundAuthor=a;
+                break;
+            }
+        }
+        if (foundAuthor==null){
+            return "Author not found";
+        }
+    StringBuilder booksWritten = new StringBuilder();
+
+    for (Book book : bookList) {
+
+        if (book.getAuthorId() == foundAuthor.getId()) {
+
+            if (booksWritten.length() > 0) {
+                booksWritten.append(", ");
+            }
+
+            booksWritten.append(book.getName());
+        }
+    }
+
+    if (booksWritten.length() == 0) {
+        booksWritten.append("None");
+    }
+
+    return "Author ID: " + foundAuthor.getId() + " Name: " + foundAuthor.getName()
+            + " Biography: " + foundAuthor.getBiography()
+            + " Books Written: " + booksWritten;
+}
 }
 
-}
