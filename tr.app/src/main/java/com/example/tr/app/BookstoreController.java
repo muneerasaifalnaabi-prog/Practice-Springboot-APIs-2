@@ -19,12 +19,12 @@ public class BookstoreController {
            return " Booke added successfully to catalog ";
     }
 
-    @GetMapping(" /checkStock")
+    @GetMapping("/checkStock")
     public String checkStock(@RequestParam Integer id){
         for (InventoryBook i :inventoryBooks){
             if (i.getBookId()==id){
                 if(i.getStockCount()> 0){
-                    return  "Available Book :"+i.getTitle() + "Price : "+i.getPrice();
+                    return  "Available Book : "+i.getTitle() + " Price : "+i.getPrice();
                 }
                 else {
                     return  "Sorry, "+i.getTitle()+" is currently sold out .. :(";
@@ -32,5 +32,22 @@ public class BookstoreController {
             }
 
         }
+        return  "Sorry ,the BookStore does not carry this title";
     }
+    @GetMapping("/report")
+    public String stockReport(@RequestParam Integer stockThreshold ){
+        String report= "";
+
+        for (InventoryBook book :inventoryBooks){
+            if (book.getStockCount()<= stockThreshold){
+                report += "Title :" +book.getTitle() + " Stock : "+ book.getStockCount();
+            }
+        }
+        if (report.equals("")) {
+
+            return "No book need recording ";
+        }
+        return report;
+    }
+
 }
