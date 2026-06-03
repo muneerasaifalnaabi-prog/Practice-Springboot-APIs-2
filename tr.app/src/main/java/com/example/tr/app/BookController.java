@@ -37,8 +37,11 @@ public class BookController {
         public String searchMsg(@RequestParam Integer id){
 
         for (Book b :books){
-            if (b.getId().equals(id))
+            if (b.getId().equals(id)){
+                return  "Book founded :"+b.getName();
+            }
         }
+
 
 
         }
