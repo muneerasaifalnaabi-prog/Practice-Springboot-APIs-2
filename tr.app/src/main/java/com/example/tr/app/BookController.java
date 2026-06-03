@@ -23,4 +23,11 @@ public class BookController {
         return books;
     }
 
+    @GetMapping("/find-by-name")
+    public Book findByName(@RequestParam String name){
+
+        }
+
+
+
 }
