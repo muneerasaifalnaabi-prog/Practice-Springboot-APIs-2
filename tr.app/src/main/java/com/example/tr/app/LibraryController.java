@@ -25,6 +25,7 @@ public List<Author> authorList(){
 }
 @GetMapping("/addRelationalbBook")
 public String addRelationalBook(@RequestParam int id, @RequestParam String name, @RequestParam int authorId) {
+    boolean authorExists = false;
 
 }
 
