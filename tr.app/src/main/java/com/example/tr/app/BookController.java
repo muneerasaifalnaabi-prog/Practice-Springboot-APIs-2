@@ -13,7 +13,8 @@ public class BookController {
     @GetMapping("/add-book")
     public String addBook(@RequestParam Integer id,@RequestParam String name){
 
-       Book books = new Book(id,name);
+       Book book = new Book(id,name);
+       books.add(book);
 
     }
 
