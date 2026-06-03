@@ -3,6 +3,7 @@ package com.example.tr.app;
 public class Book {
     private  Integer id ;
     private String name;
+    private Integer authorId;
 
     public Book(Integer id, String name) {
         this.id = id;
