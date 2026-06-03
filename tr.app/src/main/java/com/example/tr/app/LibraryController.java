@@ -19,8 +19,11 @@ public String addAuthor(@RequestParam Integer id ,@RequestParam String name,@Req
     return "Author added successfully";
 
 }
+@GetMapping(" /all-authors")
+public List<Author> authorList(){
+        return authorList;
+}
 
-public
 
 
 }
