@@ -38,11 +38,10 @@ public class BookController {
 
         for (Book b :books){
             if (b.getId().equals(id)){
-                return  "Book founded :"+b.getName();
+                return  "Book founded : "+b.getName();
             }
         }
-
-
+        return "Sorry, that book ID is not available. :(";
 
         }
 
