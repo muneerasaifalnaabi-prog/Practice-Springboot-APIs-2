@@ -27,6 +27,14 @@ public List<Author> authorList(){
 public String addRelationalBook(@RequestParam int id, @RequestParam String name, @RequestParam int authorId) {
     boolean authorExists = false;
 
+    for (Author a :authorList){
+        if(a.getId()==authorId){
+            authorExists=true;
+            break;
+        }
+
+    }
+
 }
 
 
