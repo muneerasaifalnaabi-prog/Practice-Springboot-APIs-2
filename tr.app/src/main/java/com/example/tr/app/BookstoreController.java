@@ -11,8 +11,9 @@ import java.util.List;
 public class BookstoreController {
     public List<InventoryBook> inventoryBooks = new ArrayList<>();
 
-    @GetMapping("/addInventoryBokk")
-    public String addInventoryBokk(@RequestParam Integer id, @RequestParam String title, @RequestParam Double price, @RequestParam Integer stock) {
+    @GetMapping("/addInventoryBook")
+    public String addInventoryBook(@RequestParam Integer id, @RequestParam String title, @RequestParam Double price, @RequestParam Integer stock) {
            InventoryBook inventoryBook =new InventoryBook(id,title,price,stock);
+           inventoryBooks.add(inventoryBook);
     }
 }
