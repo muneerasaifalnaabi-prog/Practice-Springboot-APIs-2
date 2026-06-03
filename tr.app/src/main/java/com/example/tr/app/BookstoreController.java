@@ -18,4 +18,11 @@ public class BookstoreController {
 
            return " Booke added successfully to catalog ";
     }
+
+    @GetMapping(" /checkStock")
+    public String checkStock(@RequestParam Integer bookId){
+        for (InventoryBook i :inventoryBooks){
+
+        }
+    }
 }
