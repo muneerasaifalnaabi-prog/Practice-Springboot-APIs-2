@@ -25,11 +25,17 @@ public class BookController {
 
     @GetMapping("/find-by-name")
     public Book findByName(@RequestParam String name){
-        for (Book b:books){
-            if(b.getName().equalsIgnoreCase(name)){
+        for (Book b:books) {
+            if (b.getName().equalsIgnoreCase(name)) {
                 return b;
             }
         }
+            return null;
+
+        }
+        @GetMapping("/search-msg")
+        public String searchMsg(@RequestParam Integer id){
+
 
         }
 
