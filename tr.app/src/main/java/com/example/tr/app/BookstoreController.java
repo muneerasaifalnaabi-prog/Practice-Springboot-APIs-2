@@ -20,8 +20,16 @@ public class BookstoreController {
     }
 
     @GetMapping(" /checkStock")
-    public String checkStock(@RequestParam Integer bookId){
+    public String checkStock(@RequestParam Integer id){
         for (InventoryBook i :inventoryBooks){
+            if (i.getBookId()==id){
+                if(i.getStockCount()> 0){
+                    return  "Available Book :"+i.getTitle() + "Price : "+i.getPrice();
+                }
+                else {
+                    return  "Sorry, "+i.getTitle()+" is currently sold out .. :(";
+                }
+            }
 
         }
     }
