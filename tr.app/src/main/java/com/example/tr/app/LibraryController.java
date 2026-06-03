@@ -12,16 +12,20 @@ public class LibraryController {
     private static List<Author> authorList=new ArrayList<>();
     private static List<Book> bookList =new ArrayList<>();
 
-    @GetMapping("/add-author")
+    @GetMapping("/addAuthor")
 public String addAuthor(@RequestParam Integer id ,@RequestParam String name,@RequestParam String biography){
     Author author = new Author(id,name,biography);
     authorList.add(author);
     return "Author added successfully";
 
 }
-@GetMapping(" /all-authors")
+@GetMapping("/allAuthors")
 public List<Author> authorList(){
         return authorList;
+}
+@GetMapping("/addRelationalbBook")
+public String addRelationalBook(@RequestParam int id, @RequestParam String name, @RequestParam int authorId) {
+
 }
 
 
