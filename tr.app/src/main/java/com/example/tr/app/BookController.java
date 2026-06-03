@@ -17,8 +17,10 @@ public class BookController {
        books.add(book);
        return "Books added successfully";
 
-
-
+    }
+    @GetMapping("/all-books")
+    public List<Book> printBook(){
+        return books;
     }
 
 }
